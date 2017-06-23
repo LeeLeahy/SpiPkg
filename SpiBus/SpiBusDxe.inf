@@ -1,0 +1,63 @@
+## @file
+#
+#  SPI Bus driver
+#
+#  Copyright (c) 2016-2017, Intel Corporation. All rights reserved.<BR>
+#
+#  This program and the accompanying materials are licensed and made available
+#  under the terms and conditions of the BSD License which accompanies this
+#  distribution. The full text of the license may be found at
+#  http://opensource.org/licenses/bsd-license.php
+#  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SpiBusDxe
+  FILE_GUID                      = 45BBE90A-ECBE-4c3b-AD8A-C985FF57D47A
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = SpiBusEntryPoint
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC ARM AARCH64
+#
+
+[Sources]
+  SpiBus.c
+  SpiBus.h
+  SpiBusDxe.c
+  SpiIo.c
+
+[Packages]
+  MdeModulePkg/MdeModulePkg.dec
+  MdePkg/MdePkg.dec
+  SpiPkg/SpiPkg.dec
+
+[LibraryClasses]
+  BaseMemoryLib
+  DebugLib
+  DevicePathLib
+  UefiDriverEntryPoint
+  UefiLib
+
+[Protocols]
+  gEfiSpiConfigurationProtocolGuid       ## CONSUMES
+  gEfiDevicePathProtocolGuid             ## CONSUMES
+  gEfiDevicePathToTextProtocolGuid       ## SOMETIMES_CONSUMES
+  gEfiSpiHcProtocolGuid                  ## CONSUMES
+# gEfiSpiIoProtocolGuid                  ## PRODUCES
+  gEfiLegacySpiControllerProtocolGuid    ## SOMETIMES_CONSUMES
+
+[FeaturePcd]
+  gEfiSpiPkgTokenSpaceGuid.PcdDisplaySpiHcDevicePath  ## CONSUMES
+
+[DEPEX]
+  TRUE
+
+[UserExtensions.TianoCore."ExtraFiles"]
+  SpiBusExtra.uni

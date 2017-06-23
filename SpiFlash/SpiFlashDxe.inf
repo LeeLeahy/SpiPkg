@@ -1,0 +1,61 @@
+## @file
+#
+#  SPI Flash driver
+#
+#  Copyright (c) 2016-2017, Intel Corporation. All rights reserved.<BR>
+#
+#  This program and the accompanying materials are licensed and made available
+#  under the terms and conditions of the BSD License which accompanies this
+#  distribution. The full text of the license may be found at
+#  http://opensource.org/licenses/bsd-license.php
+#  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SpiFlashDxe
+  FILE_GUID                      = 1789C798-F54F-4fe7-9130-11E5E8490514
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = FlashEntryPoint
+
+#
+# The following information is for reference only and not required by the build
+# tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC ARM AARCH64
+#
+
+[Sources]
+  Flash.c
+  Manufacture.c
+  SpiFlash.h
+  SpiFlashDxe.c
+
+[Packages]
+  MdeModulePkg/MdeModulePkg.dec
+  MdePkg/MdePkg.dec
+  SpiPkg/SpiPkg.dec
+
+[LibraryClasses]
+  AsciiDump
+  BaseMemoryLib
+  DebugLib
+  DevicePathLib
+  TimerLib
+  UefiDriverEntryPoint
+  UefiLib
+
+[Guids]
+  gEfiSpiNorFlashDriverGuid              ## CONSUMES
+
+[Protocols]
+  gEfiLegacySpiFlashProtocolGuid         ## SOMETIMES-PRODUCES
+  gEfiSpiNorFlashProtocolGuid            ## PRODUCES
+# gEfiSpiIoProtocolGuid                  ## CONSUMES
+
+[DEPEX]
+  gEfiSpiNorFlashDriverGuid
+

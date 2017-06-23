@@ -1,0 +1,53 @@
+## @file
+#
+#  Texas Instruments ADC108S102 driver
+#
+#  Copyright (c) 2016, Intel Corporation. All rights reserved.<BR>
+#
+#  This program and the accompanying materials are licensed and made available
+#  under the terms and conditions of the BSD License which accompanies this
+#  distribution. The full text of the license may be found at
+#  http://opensource.org/licenses/bsd-license.php
+#  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = Adc108s102Dxe
+  FILE_GUID                      = C9E01F73-CB7B-480a-80D9-57574D3CE01D
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = AdcEntryPoint
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC ARM AARCH64
+#
+
+[Sources]
+  Driver.c
+  Adc108s102.c
+  Adc108s102Dxe.h
+
+[Packages]
+  MdeModulePkg/MdeModulePkg.dec
+  MdePkg/MdePkg.dec
+  SpiPkg/SpiPkg.dec
+
+[LibraryClasses]
+  BaseMemoryLib
+  DebugLib
+  DevicePathLib
+  UefiDriverEntryPoint
+  UefiLib
+
+[Protocols]
+# gTexasInstrumentsAdc108s102ProtocolGuid        ## PRODUCES
+# TexasInstruments_ADC108S102_Driver             ## CONSUMES
+# gEfiSpiIoProtocolGuid                          ## CONSUMES
+
+[UserExtensions.TianoCore."ExtraFiles"]
+  Adc108s102DxeExtra.uni

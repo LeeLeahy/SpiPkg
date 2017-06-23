@@ -1,0 +1,53 @@
+## @file
+#
+#  Maxim MAX6950 driver
+#
+#  Copyright (c) 2016, Intel Corporation. All rights reserved.<BR>
+#
+#  This program and the accompanying materials are licensed and made available
+#  under the terms and conditions of the BSD License which accompanies this
+#  distribution. The full text of the license may be found at
+#  http://opensource.org/licenses/bsd-license.php
+#  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = Max6950Dxe
+  FILE_GUID                      = B5F941BC-0166-443b-9357-C2C596C59A5F
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = Max6950EntryPoint
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC ARM AARCH64
+#
+
+[Sources]
+  Driver.c
+  Max6950.c
+  Max6950Dxe.h
+
+[Packages]
+  MdeModulePkg/MdeModulePkg.dec
+  MdePkg/MdePkg.dec
+  SpiPkg/SpiPkg.dec
+
+[LibraryClasses]
+  BaseMemoryLib
+  DebugLib
+  DevicePathLib
+  UefiDriverEntryPoint
+  UefiLib
+
+[Protocols]
+# gMaximMax6950ProtocolGuid              ## PRODUCES
+# Maxim_MAX6950_Driver                   ## CONSUMES
+# gEfiSpiIoProtocolGuid                  ## CONSUMES
+
+[UserExtensions.TianoCore."ExtraFiles"]
+  Max6950Extra.uni

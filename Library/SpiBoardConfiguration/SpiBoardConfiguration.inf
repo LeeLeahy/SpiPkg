@@ -1,0 +1,48 @@
+## @file
+#
+#  SPI board configuration support library.
+#
+#  Provide the support for OEMs to easily configure the SPI busses on their
+#  boards.
+#
+#  Copyright (c) 2016, Intel Corporation. All rights reserved.<BR>
+#
+#  This program and the accompanying materials are licensed and made available
+#  under the terms and conditions of the BSD License which accompanies this
+#  distribution. The full text of the license may be found at
+#  http://opensource.org/licenses/bsd-license.php
+#  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SpiBoardConfiguration
+  FILE_GUID                      = 1528D57E-6C3C-4fd3-B243-D50B71C037EF
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = SpiBoardConfigurationLib 
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC ARM AARCH64
+#
+
+[Sources]
+  SpiBoardConfiguration.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  SpiPkg/SpiPkg.dec
+
+[LibraryClasses]
+  UefiBootServicesTableLib
+
+[Protocols]
+  gEfiSpiConfigurationProtocolGuid                  ## TO_START
+
+[UserExtensions.TianoCore."ExtraFiles"]
+  SpiBoardConfigurationExtra.uni
+

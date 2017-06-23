@@ -1,0 +1,26 @@
+## @file
+# Include file containing Quark specific extensions to the Coreboot Payload
+# Package
+#
+# Provides drivers and definitions to create a UEFI payload for coreboot.
+#
+# Copyright (c) 2016, Intel Corporation. All rights reserved.<BR>
+# This program and the accompanying materials are licensed and made available
+# under the terms and conditions of the BSD License that accompanies this
+# distribution.  The full text of the license may be found at
+# http://opensource.org/licenses/bsd-license.php.
+#
+# THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+# WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+#
+##
+
+#INF SpiPkg/VoltMeterDxe/VoltMeterDxe.inf
+INF SpiPkg/Adc108s102Dxe/Adc108s102Dxe.inf
+INF SpiPkg/SpiFlashDxe/SpiFlashDxe.inf
+INF SpiPkg/ClockDxe/ClockDxe.inf
+INF SpiPkg/Max6950Dxe/Max6950Dxe.inf
+INF SpiPkg/SpiBusDxe/SpiBusDxe.inf
+INF SpiPkg/GalileoSpi/GalileoSpi.inf
+INF SpiPkg/QuarkSpiDxe/QuarkSpiDxe.inf
+INF SpiPkg/LegacySpiDxe/LegacySpiDxe.inf
